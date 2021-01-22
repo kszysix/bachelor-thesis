@@ -1,0 +1,113 @@
+
+\chapter{Wstęp}
+
+
+Gabinety dentystyczne od wielu lat korzystają z procesu informatyzacji. Pełna obsługa klienta, katalogi, zdjęcia - to wszystko zostało przeniesione z dokumentacji papierowej do cyfrowego świata. Zmiana ta dotknęła jednakże bardziej pracowników administracyjnych czy asystentów stomatologów, niż samych lekarzy\cite{dentalSurvay}. Lekarze nadal muszą wykonywać wiele czynności ręcznie takich jak uzupełnianie dokumentacji po wizycie czy wykrywanie i~opisywanie schorzeń. Obecny poziom technologii pozwala na znaczne zwiększenie stopnia automatyzacji i~liczby usprawnień przy pracy w~klinikach dentystycznych.
+
+Celem pracy jest zaprojektowanie dwóch modułów ułatwiających pracę stomatologom. Pierwszy moduł to nowoczesny diagram zębowy posiadający możliwość wprowadzania danych komendami głosowymi. Jest to propozycja rozwiązania problemu wypełniania dokumentacji po wizycie. Dzięki interfejsowi głosowemu lekarz może uzupełniać diagram zębowy w~czasie pracy z klientem. Drugim modułem jest detektor wady zgryzu [tor odwodzenia żuchwy]. Na podstawie prostego filmiku otwierania żuchwy przez pacjenta, moduł jest wstanie obliczyć nieprawidłowość w~torze odwodzenia żuchwy i~opracować raport. Automatyzacja tego procesu pozwoli na uproszczenie badania co przełoży się na większą ilość osób badanych. Wymaga również mniej czasu od stomatologa.
+
+Implementacja modułów pozwala w~prosty sposób dołączyć je do istniejących systemów i~programów dentystycznych. W~celu ułatwienia dostępu, każdy moduł będzie w~stanie działać samodzielnie jako aplikacja desktopowa. 
+
+Ważną częścią pracy jest użyteczność projektu. Oznacza to, że implementacja projektu jest zgodna ze standardami medycznymi, które są naturalne dla pracy stomatologów. Część literatury będzie mieć w~związku z tym podłoże medyczne. Duża część podstaw teoretycznych będzie się skupiała na wyjaśnieniu podstaw terminologii stomatologicznej, tak aby łatwiej było zrozumieć niektóre decyzje architektoniczne. W~literaturze znajdą się również pozycje związane z zastosowanymi algorytmami oraz z użytymi technologiami.
+
+Struktura pracy jest następująca. W~rozdziale drugim przedstawiono podstawy teoretyczne związane z powyżej opisaną literaturą. Rozdział trzeci jest poświęcony użytym technologiom. Opisy działania przedstawiają najważniejsze aspekty z uwagi na które dany framework, biblioteka czy program został wybrany do projektu. Rozdział ten pokazuje również niektóre funkcjonalności z bardziej niskopoziomowej strony. Następny rozdział czwarty przedstawia bardziej ogólną budową i~architekturę obydwu modułów. Opisuje również jak działa komunikacja i~przepływ danych. Rozdział piąty skupia się na pokazaniu aplikacji od strony użytkownika. Referuje możliwości aplikacji i~przypadki użycia. Na koniec opisuje proces testowania oraz trudności jakie wystąpiły przy tworzeniu programu. Ostatni rozdział szósty jest podsumowaniem całej pracy. Przedstawia rezultaty jakie udało się uzyskać, a~także wizję rozwoju aplikacji w~przyszłości.
+
+
+\section{Struktura prac}
+Praca od początku została określona jako dwa osobne moduły. W~związku z tym w~większości rozdziałów pracy obowiązuje podział na ,,System oznaczania zębów'' oraz ,,Rozpoznawanie wady zgryzu''. Obydwie części mają taki sam cel, który opisano wcześniej. Nad każdym modułem pracowały dwie osoby. Podział prac został określony i~zrealizowany w~sposób:
+\subsection{System oznaczania zębów}
+nie wiem czy bardziej czy mniej ogólnie, niech śniatała powie jak będzie sprawdzał
+
+
+\textbf{Zofia Fraś}
+\begin{itemize}
+    \item moje pomysły:
+    \item Budowa klienta
+    \item Zaprojektowanie i ewaluacja projektu graficznego diagramu zębowego
+    \item Stworzenie procesu asynchronicznej aktualizacji zmian dokonywanych przez interfejs głosowy
+    \item Walidacje pól - jakoś ładniej
+    \item Zadbanie o UX - to jakoś inaczej
+    \item Stworzenie systemu obsługi diagramu zębowego
+    \item Projekt i realizacja interfejsu graficznego aplikacji
+    \item Cos o widoku formularza osobowego?
+    \item Testy manualne 
+\end{itemize}
+
+\textbf{Krzysztof Sobkowiak}    
+\begin{itemize}
+    \item Budowa serwera
+    \item Obsługa nierelacyjnej bazy danych i przetwarzanie danych w formacie JSON
+    \item Komunikacja klient-serwer
+    \item Interfejs głosowy, w tym połączenie z Google Speech Recognition API
+    \item Stworzenie, obsługa i testowanie słowników interfejsu głosowego
+    \item Algorytm klasyfikacji komend głosowych
+    \item Proces wersjonowania
+    \item Zarządzanie repozytorium projektu w serwisie GitHub
+\end{itemize}
+
+\subsection{Analiza odchylenia toru odwodzenia żuchwy}
+\textbf{Marcin Jachymski}
+\begin{itemize}
+    \item Detekcja zębów
+    \item Śledzenie ruchu zębów
+\end{itemize}
+
+\textbf{Agnieszka Szuflak}    
+\begin{itemize}
+    \item Interfejs użytkownika
+    \item Obliczenie odległości i kątów
+\end{itemize}
+
+\section{Repozytoria}
+Projekt została zrealizowana w~oparciu o~narzędzie kontroli wersji Git, a~publiczne repozytoria umieszczone w~serwisie GitHub:
+
+\begin{itemize}
+    \item Praca inżynierska:
+    
+    \url{}
+
+    \item System oznaczania zębów:
+    
+    \url{https://github.com/kszysix/dental-data-procesing}
+    
+    \item Analiza odchylenia toru odwodzenia żuchwy:
+    
+    \url{}
+\end{itemize}
+
+\section{TODO}
+Co trzeba zrobić i na co zwracać uwagę:
+\begin{itemize}
+\item "nie wiem o~czym pisać" / "nie wiem jak dużo pisać":
+\begin{itemize}
+    \item temat: na podstawie tytułu sekcji znajdź pojęcie informatyczne np. RESTapi, metody zapisu i kompresji obrazu, 
+    \item znajdź tekst na legitnej stronce po angielsku
+    \item znajdz coś naukowego co potwierdza mniej więcej tekst ze stronki
+    \item dodaj cytowanie 
+    \item przetłumacz tekst ze stronki (samemu!), dzięki czemu już nie robisz plagiatu bo piszesz swoimi słowami
+    \item zalinkuj cytowanie w~pracy
+    \item bonus: dodaj legitny obrazek razem ze źródłem.\cite{restapi}
+\end{itemize}
+    \item każda opinia powinna być potwierdzona odnośnikiem do strony/artykułu/pracy
+    \item w~każdej sekcji a~najlepiej podsekcji powinny znaleźć się odnośniki do literatury
+    \item spokojnie w~co drugiej podsekcji może być jakiś obrazek, najlepiej jakiś diagram pokazujący działanie. Przy czym źródło obrazka też powinno być w~miarę legitne
+    \item warto rozpisywać się o~wszystkim - każdym szczególne np. w~jaki sposób jest coś wyśrodkowane na froncie czy jakich standardów używa biblioteka i opisać standard lub 
+    \item Na koniec trzeba sprawdzić zasady opisane w~załączniku np. myślniki, miejsca cytowań, twarda spacja! 
+    \item po ustawiać zdjęcia na koniec
+    \item czy zamiast "wada zgryzu" powinno być "dewiacja zgryzu"
+    \item np. Jakie zalety i wady posiada openCv? jakie są alternatywy? jak działa licencja?
+    
+Jaki format obrazu (czy typ danych) ma filmik i klatka? wady i zalety fomratu?
+
+*wszędzie* :
+
+jaka jest licencja?
+
+jakie są alternatywy?
+
+wady i  zalety
+
+jakie są różnice między klasycznym użyciem a~użyciem w~aplikacji?
+
+\end{itemize}
+    
